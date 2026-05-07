@@ -1,5 +1,7 @@
 # Keeper — Hack The Box Walkthrough
 
+![HTB](https://img.shields.io/badge/Hack%20The%20Box-Keeper-green)
+
 ## Machine Information
 
 - **Machine:** Keeper
@@ -19,6 +21,17 @@ Keeper is an easy Linux machine focused on:
 - SSH access using a recovered PuTTY private key
 
 This walkthrough covers the full path from initial enumeration to root access.
+
+---
+
+# TL;DR
+
+- Default credentials on RT
+- Discovery of lnorgaard credentials
+- SSH access as user
+- KeePass dump exploitation using CVE-2023-32784
+- Recovery of a PuTTY private key
+- Root access through SSH
 
 ---
 
@@ -64,7 +77,7 @@ Browsing the site again showed a Request Tracker (RT) login portal.
 
 ---
 
-# Initial Access
+# Foothold
 
 ## Default Credentials
 
@@ -79,7 +92,7 @@ This granted administrator access to the RT instance.
 
 ---
 
-# User Discovery
+## User Discovery
 
 While navigating the RT interface, I found another user:
 
@@ -95,7 +108,7 @@ Welcome2023!
 
 ---
 
-# SSH Access
+## SSH Access
 
 Using the discovered credentials, I connected through SSH:
 
@@ -107,7 +120,7 @@ Connection successful.
 
 ---
 
-# User Flag
+## User Flag
 
 Inside the user's home directory:
 
@@ -129,12 +142,14 @@ cat user.txt
 ```
 
 ```text
-3e558b699b77f25f11de52ed84b545f9
+HTB{REDACTED}
 ```
 
 ---
 
-# KeePass Investigation
+# Privilege Escalation
+
+## KeePass Investigation
 
 The file `RT30000.zip` looked interesting, so I copied it locally:
 
@@ -159,7 +174,7 @@ These files strongly suggested a KeePass-related attack path.
 
 ---
 
-# CVE-2023-32784
+## CVE-2023-32784
 
 Researching KeePass memory dump vulnerabilities led to:
 
@@ -167,11 +182,11 @@ Researching KeePass memory dump vulnerabilities led to:
 CVE-2023-32784
 ```
 
-This vulnerability allows recovery of the KeePass master password from memory dumps.
+This vulnerability affects KeePass 2.X and allows recovery of the KeePass master password from memory dumps.
 
 ---
 
-# Dump Analysis
+## Dump Analysis
 
 I cloned the public PoC tool:
 
@@ -203,7 +218,7 @@ rødgrød med fløde
 
 ---
 
-# Opening the KeePass Database
+## Opening the KeePass Database
 
 I opened the KeePass database with KeePassXC:
 
@@ -221,7 +236,7 @@ Inside the database, I found a PuTTY private key stored in the notes section of 
 
 ---
 
-# Rebuilding the PuTTY Key
+## Rebuilding the PuTTY Key
 
 I copied the entire PuTTY key content into a file:
 
@@ -239,7 +254,7 @@ Comment: rsa-key-20230519
 
 ---
 
-# Converting the Key
+## Converting the Key
 
 I installed PuTTY tools:
 
@@ -261,7 +276,7 @@ chmod 600 id_rsa
 
 ---
 
-# Root Access
+## Root Access
 
 Using the converted SSH key:
 
@@ -277,7 +292,7 @@ root@keeper:~#
 
 ---
 
-# Root Flag
+## Root Flag
 
 Finally:
 
@@ -286,8 +301,24 @@ cat /root/root.txt
 ```
 
 ```text
-38a0d9004bec6f98c30e815ca19e4bae
+HTB{REDACTED}
 ```
+
+---
+
+# Lessons Learned
+
+- Default credentials remain a major security risk.
+- Password managers can leak sensitive information through memory dumps.
+- Credential reuse can quickly lead to full compromise.
+- Sensitive SSH keys should never be stored insecurely.
+
+---
+
+# References
+
+- https://github.com/vdohney/keepass-password-dumper
+- https://nvd.nist.gov/vuln/detail/CVE-2023-32784
 
 ---
 

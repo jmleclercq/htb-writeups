@@ -24,6 +24,19 @@ This walkthrough covers the full path from initial enumeration to root access.
 
 ---
 
+# Table of Contents
+
+- [TL;DR](#tldr)
+- [Reconnaissance](#reconnaissance)
+- [Web Enumeration](#web-enumeration)
+- [Foothold](#foothold)
+- [Privilege Escalation](#privilege-escalation)
+- [Lessons Learned](#lessons-learned)
+- [References](#references)
+- [Conclusion](#conclusion)
+
+---
+
 # TL;DR
 
 - Default credentials on RT
@@ -57,6 +70,8 @@ The machine exposed:
 - SSH on port 22
 - HTTP on port 80
 
+At this stage, the HTTP service looked like the most promising attack surface.
+
 ---
 
 # Web Enumeration
@@ -75,6 +90,8 @@ echo "10.129.229.41 tickets.keeper.htb" | sudo tee -a /etc/hosts
 
 Browsing the site again showed a Request Tracker (RT) login portal.
 
+RT instances are frequently deployed internally and sometimes retain weak or default credentials, making authentication attempts a logical next step.
+
 ---
 
 # Foothold
@@ -89,6 +106,8 @@ Password: password
 ```
 
 This granted administrator access to the RT instance.
+
+The use of default credentials immediately exposed the entire ticketing environment.
 
 ---
 
@@ -105,6 +124,8 @@ Inspecting the user profile revealed the user's initial password:
 ```text
 Welcome2023!
 ```
+
+This demonstrated a classic credential reuse/mismanagement issue.
 
 ---
 
@@ -151,7 +172,7 @@ HTB{REDACTED}
 
 ## KeePass Investigation
 
-The file `RT30000.zip` looked interesting, so I copied it locally:
+The file `RT30000.zip` looked particularly interesting, so I copied it locally:
 
 ```bash
 scp lnorgaard@10.129.229.41:/home/lnorgaard/RT30000.zip .
@@ -172,6 +193,8 @@ passcodes.kdbx
 
 These files strongly suggested a KeePass-related attack path.
 
+A memory dump associated with a password manager is often highly sensitive and worth investigating carefully.
+
 ---
 
 ## CVE-2023-32784
@@ -182,7 +205,7 @@ Researching KeePass memory dump vulnerabilities led to:
 CVE-2023-32784
 ```
 
-This vulnerability affects KeePass 2.X and allows recovery of the KeePass master password from memory dumps.
+This vulnerability affects KeePass 2.X and allows partial recovery of the KeePass master password from memory dumps.
 
 ---
 
@@ -210,7 +233,7 @@ Unknown characters are displayed as "●"
 Combined: ●{ø, Ï, ,, l, `, -, ', ], §, A, I, :, =, _, c, M}dgrød med fløde
 ```
 
-The correct password was clearly:
+The recovered password pattern strongly suggested the Danish phrase:
 
 ```text
 rødgrød med fløde
@@ -233,6 +256,8 @@ rødgrød med fløde
 ```
 
 Inside the database, I found a PuTTY private key stored in the notes section of an entry.
+
+Storing SSH private keys inside a password manager is common practice, but combined with a vulnerable memory dump, it became a full compromise vector.
 
 ---
 

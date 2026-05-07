@@ -27,6 +27,7 @@ The goal of this repository is to:
 | Machine | Platform | Difficulty | OS | Status |
 |---|---|---|---|---|
 | [Keeper](Keeper/README.md) | HTB | Easy | Linux | ✅ |
+| [TwoMillion](TwoMillion/README.md) | HTB | Easy | Linux | ✅ |
 
 ---
 

@@ -1,8 +1,9 @@
 # Keeper — Hack The Box Walkthrough
 
-![HTB](https://img.shields.io/badge/Hack%20The%20Box-Keeper-green)
+  <img src="https://img.shields.io/badge/HTB-Keeper-red?style=for-the-badge&logo=hackthebox&logoColor=white">
   <img src="https://img.shields.io/badge/Difficulty-Easy-green?style=for-the-badge">
   <img src="https://img.shields.io/badge/OS-Linux-blue?style=for-the-badge&logo=linux&logoColor=white">
+
 ## Machine Information
 
 - **Machine:** Keeper

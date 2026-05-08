@@ -28,6 +28,7 @@ The goal of this repository is to:
 |---|---|---|---|---|
 | [Keeper](Keeper/README.md) | HTB | Easy | Linux | ✅ |
 | [TwoMillion](TwoMillion/README.md) | HTB | Easy | Linux | ✅ |
+| [Knife](Knife/README.md) | HTB | Easy | Linux | ✅ |
 
 ---
 

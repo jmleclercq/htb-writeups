@@ -345,7 +345,6 @@ This machine demonstrates a full attack chain involving:
 
 - Nmap
 - Curl
-- Gobuster
 - Netcat
 - SSH
 - Linux command line

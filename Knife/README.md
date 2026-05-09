@@ -1,5 +1,7 @@
 # Hack The Box — Knife Writeup
 
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/HTB-Knife-red?style=for-the-badge&logo=hackthebox&logoColor=white">
   <img src="https://img.shields.io/badge/Difficulty-Easy-green?style=for-the-badge">
@@ -8,6 +10,7 @@
   <img src="https://img.shields.io/badge/Privilege%20Escalation-Sudo-important?style=for-the-badge">
 </p>
 
+https://app.hackthebox.com/machines/Knife?sort_by=created_at&sort_type=desc
 ---
 
 # 📚 Table of Contents

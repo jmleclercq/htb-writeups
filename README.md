@@ -24,13 +24,13 @@ The goal of this repository is to:
 
 # 📚 Writeups
 
-| Machine | Platform | Difficulty | OS | Status |
+| Machine | Platform | Difficulty | Language | Status |
 |---|---|---|---|---|
-| [Keeper](Keeper/README.md) | HTB | Easy | Linux | ✅ | English
-| [TwoMillion](TwoMillion/README.md) | HTB | Easy | Linux | ✅ | English
-| [Knife](Knife/README.md) | HTB | Easy | Linux | ✅ | English
-| [Nibbles](Nibbles/README.md) | HTB | Easy | Linux | ✅ | English
-| [Editor](Editor/README.md) | HTB | Easy | Linux | ✅ | French
+| [Keeper](Keeper/README.md) | HTB | Easy | English | ✅ |
+| [TwoMillion](TwoMillion/README.md) | HTB | Easy | English | ✅ |
+| [Knife](Knife/README.md) | HTB | Easy | English | ✅ |
+| [Nibbles](Nibbles/README.md) | HTB | Easy | English | ✅ |
+| [Editor](Editor/README.md) | HTB | Easy | French | ✅ |
 
 
 ---

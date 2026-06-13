@@ -26,11 +26,11 @@ The goal of this repository is to:
 
 | Machine | Platform | Difficulty | OS | Status |
 |---|---|---|---|---|
-| [Keeper](Keeper/README.md) | HTB | Easy | Linux | ✅ |
-| [TwoMillion](TwoMillion/README.md) | HTB | Easy | Linux | ✅ |
-| [Knife](Knife/README.md) | HTB | Easy | Linux | ✅ |
-| [Nibbles](Nibbles/README.md) | HTB | Easy | Linux | ✅ |
-| [Editor](Editor/README.md) | HTB | Easy | Linux | ✅ |
+| [Keeper](Keeper/README.md) | HTB | Easy | Linux | ✅ | English
+| [TwoMillion](TwoMillion/README.md) | HTB | Easy | Linux | ✅ | English
+| [Knife](Knife/README.md) | HTB | Easy | Linux | ✅ | English
+| [Nibbles](Nibbles/README.md) | HTB | Easy | Linux | ✅ | English
+| [Editor](Editor/README.md) | HTB | Easy | Linux | ✅ | French
 
 
 ---

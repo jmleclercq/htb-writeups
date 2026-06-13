@@ -30,6 +30,8 @@ The goal of this repository is to:
 | [TwoMillion](TwoMillion/README.md) | HTB | Easy | Linux | ✅ |
 | [Knife](Knife/README.md) | HTB | Easy | Linux | ✅ |
 | [Nibbles](Nibbles/README.md) | HTB | Easy | Linux | ✅ |
+| [Editor](Editor/README.md) | HTB | Easy | Linux | ✅ |
+
 
 ---
 

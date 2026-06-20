@@ -31,6 +31,7 @@ The goal of this repository is to:
 | [Knife](Knife/README.md) | HTB | Easy | English | ✅ |
 | [Nibbles](Nibbles/README.md) | HTB | Easy | English | ✅ |
 | [Editor](Editor/README.md) | HTB | Easy | French | ✅ |
+| [Editor](NanoCorp/README.md) | HTB | Hard | English | ✅ |
 
 
 ---

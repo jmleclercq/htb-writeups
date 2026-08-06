@@ -22,7 +22,7 @@ The goal of this repository is to:
 
 ---
 
-# 📚 Writeups
+# 📚 Machines Writeups
 
 | Machine | Platform | Difficulty | Language | Status |
 |---|---|---|---|---|
@@ -33,6 +33,13 @@ The goal of this repository is to:
 | [Editor](Editor/README.md) | HTB | Easy | French | ✅ |
 | [NanoCorp](NanoCorp/README.md) | HTB | Hard | English | ✅ |
 
+---
+
+# 📚 HTB Challenges Writeups
+
+| Challenge | Category | Difficulty | Language | Status |
+|---|---|---|---|---|
+| [Survival of the Fittest](Survival-of-the-Fittest/README.md) | Blockchain | Very Easy | English | ✅ |
 
 ---
 

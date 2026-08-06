@@ -1,80 +1,90 @@
-# 👋 Welcome to my Cybersecurity Writeups
+# 🧠 Hack The Box Writeups
 
-![HTB](https://img.shields.io/badge/Hack%20The%20Box-Writeups-green)
-![Linux](https://img.shields.io/badge/Linux-Pentesting-red)
-![CTF](https://img.shields.io/badge/CTF-Learning-blue)
+<p align="center">
 
-This repository contains my walkthroughs and notes for retired CTF machines and cybersecurity labs.
+![Hack The Box](https://img.shields.io/badge/Hack%20The%20Box-Retired%20Writeups-9FEF00?style=for-the-badge&logo=hackthebox&logoColor=black)
+![Languages](https://img.shields.io/badge/Languages-English%20%7C%20French-00599C?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Actively%20Maintained-success?style=for-the-badge)
+![Educational](https://img.shields.io/badge/Purpose-Educational-informational?style=for-the-badge)
 
-The goal of this repository is to:
-- improve my offensive security skills
-- document my methodology
-- build a public cybersecurity portfolio
-- share knowledge with the community
+</p>
 
----
-
-# 🧠 Platforms
-
-- Hack The Box
-- TryHackMe
-
+<p align="center">
+<strong>Personal collection of Hack The Box retired machine and challenge writeups.</strong><br>
+Methodology, attack paths and technical notes focused on understanding exploitation techniques rather than simply reproducing commands.
+</p>
 
 ---
 
-# 📚 Machines Writeups
+## 📑 Contents
 
-| Machine | Platform | Difficulty | Language | Status |
-|---|---|---|---|---|
-| [Keeper](Keeper/README.md) | HTB | Easy | English | ✅ |
-| [TwoMillion](TwoMillion/README.md) | HTB | Easy | English | ✅ |
-| [Knife](Knife/README.md) | HTB | Easy | English | ✅ |
-| [Nibbles](Nibbles/README.md) | HTB | Easy | English | ✅ |
-| [Editor](Editor/README.md) | HTB | Easy | French | ✅ |
-| [NanoCorp](NanoCorp/README.md) | HTB | Hard | English | ✅ |
+- [🧠 Hack The Box Writeups](#-hack-the-box-writeups)
+  - [📑 Contents](#-contents)
+  - [📖 About](#-about)
+  - [🖥️ Machines](#️-machines)
+  - [🧩 Challenges](#-challenges)
+  - [🎯 Philosophy](#-philosophy)
+  - [⚠️ Disclaimer](#️-disclaimer)
 
 ---
 
-# 📚 HTB Challenges Writeups
+## 📖 About
+
+> [!NOTE]
+> Every writeup is written after completing the target myself and focuses on methodology, technical reasoning and the decisions made throughout the exploitation process.
+
+Each writeup typically includes:
+
+- Information Gathering
+- Enumeration
+- Initial Access
+- Privilege Escalation
+- Post-Exploitation
+- Lessons Learned
+
+---
+
+## 🖥️ Machines
+
+| Machine | Difficulty | OS | Language | Status |
+|:---------|:----------:|:--:|:--------:|:------:|
+| [Keeper](Keeper/README.md) | Easy | 🐧 Linux | 🇬🇧 | ✅ |
+| [TwoMillion](TwoMillion/README.md) | Easy | 🐧 Linux | 🇬🇧 | ✅ |
+| [Knife](Knife/README.md) | Easy | 🐧 Linux | 🇬🇧 | ✅ |
+| [Nibbles](Nibbles/README.md) | Easy | 🐧 Linux | 🇬🇧 | ✅ |
+| [Editor](Editor/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ |
+| [NanoCorp](NanoCorp/README.md) | Hard | 🐧 Linux | 🇬🇧 | ✅ |
+
+---
+
+## 🧩 Challenges
 
 | Challenge | Category | Difficulty | Language | Status |
-|---|---|---|---|---|
-| [Survival of the Fittest](Survival-of-the-Fittest/README.md) | Blockchain | Very Easy | English | ✅ |
+|:----------|:--------:|:----------:|:--------:|:------:|
+| [Survival of the Fittest](Survival-of-the-Fittest/README.md) | Blockchain | Very Easy | 🇬🇧 | ✅ |
 
 ---
 
-# 🛠️ Topics Covered
+## 🎯 Philosophy
 
-- Web Enumeration
-- Linux Privilege Escalation
-- Credential Reuse
-- Password Attacks
-- CVE Exploitation
-- SSH Key Abuse
-- Active Directory (future)
-- Reverse Engineering (future)
+> [!IMPORTANT]
+>
+> The purpose of this repository is to document **methodology**, **technical reasoning**, and **decision-making** throughout the exploitation process.
+>
+> The objective is to explain **why** an attack works, not simply **which commands** to execute.
 
 ---
 
-# 🎯 Current Goals
+## ⚠️ Disclaimer
 
-- Improve Linux privilege escalation methodology
-- Learn Active Directory exploitation
-- Build a complete cybersecurity portfolio
-- Publish professional-quality writeups
-
----
-
-# ⚠️ Disclaimer
-
-All writeups published here concern retired machines or legal training environments only.
-
-Do not attempt to reproduce these techniques on systems you do not own or have explicit authorization to test.
+> [!WARNING]
+>
+> This repository contains writeups for **retired Hack The Box machines and challenges only**, in accordance with the platform's rules.
+>
+> The content is published exclusively for educational purposes.
 
 ---
 
-# 📎 References
-
-- [Hack The Box](https://www.hackthebox.com?utm_source=chatgpt.com)
-- [TryHackMe](https://tryhackme.com?utm_source=chatgpt.com)
-- [OWASP](https://owasp.org?utm_source=chatgpt.com)
+<p align="center">
+  <strong>Happy Hacking!</strong> 🟩
+</p>

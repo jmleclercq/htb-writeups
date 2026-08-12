@@ -62,6 +62,7 @@ Each writeup typically includes:
 | Challenge | Category | Difficulty | Language | Status |
 |:----------|:--------:|:----------:|:--------:|:------:|
 | [Survival of the Fittest](Survival-of-the-Fittest/README.md) | Blockchain | Very Easy | 🇬🇧 | ✅ |
+| [Phase Madness](PhaseMadness/README.md) | Quantum | Easy | 🇬🇧 | ✅ |
 
 ---
 

@@ -54,6 +54,7 @@ Each writeup typically includes:
 | [Nibbles](Nibbles/README.md) | Easy | 🐧 Linux | 🇬🇧 | ✅ |
 | [Editor](Editor/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ |
 | [NanoCorp](NanoCorp/README.md) | Hard | 🐧 Linux | 🇬🇧 | ✅ |
+| [Zero](Zero/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 
 ---
 

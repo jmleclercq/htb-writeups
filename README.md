@@ -55,6 +55,7 @@ Each writeup typically includes:
 | [Editor](Editor/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ |
 | [NanoCorp](NanoCorp/README.md) | Hard | 🐧 Linux | 🇬🇧 | ✅ |
 | [Zero](Zero/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
+| [Brainfuck](Brainfuck/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 
 ---
 

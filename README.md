@@ -56,6 +56,7 @@ Each writeup typically includes:
 | [NanoCorp](NanoCorp/README.md) | Hard | 🐧 Linux | 🇬🇧 | ✅ |
 | [Zero](Zero/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 | [Brainfuck](Brainfuck/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
+| [CodePartTwo](CodePartTwo/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 
 ---
 
@@ -65,6 +66,7 @@ Each writeup typically includes:
 |:----------|:--------:|:----------:|:--------:|:------:|
 | [Survival of the Fittest](Survival-of-the-Fittest/README.md) | Blockchain | Very Easy | 🇬🇧 | ✅ |
 | [Phase Madness](PhaseMadness/README.md) | Quantum | Easy | 🇬🇧 | ✅ |
+
 
 ---
 

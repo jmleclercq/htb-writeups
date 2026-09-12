@@ -67,6 +67,7 @@ Each writeup typically includes:
 |:----------|:--------:|:----------:|:--------:|:------:|
 | [Survival of the Fittest](Survival-of-the-Fittest/README.md) | Blockchain | Very Easy | 🇬🇧 | ✅ |
 | [Phase Madness](PhaseMadness/README.md) | Quantum | Easy | 🇬🇧 | ✅ |
+| [Powergrid](Powergrid/README.md) | Secure Coding | Easy | 🇬🇧 | ✅ |
 
 
 ---

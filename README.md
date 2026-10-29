@@ -57,7 +57,7 @@ Each writeup typically includes:
 | [Zero](Zero/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 | [Brainfuck](Brainfuck/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 | [CodePartTwo](CodePartTwo/README.md) | Linux | Easy | 🇬🇧 | ✅ |
-| [Silentium](Silentium/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ |
+| [Silentium](Silentium/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ | 
 | [Mirai](Mirai/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Sau](Sau/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Antique](Antique/README.md) | Linux | Easy | 🇬🇧 | ✅ |

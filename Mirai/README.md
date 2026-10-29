@@ -10,11 +10,12 @@
 
 - **Machine:** Mirai
 - **Platform:** Hack The Box
-- **IP:** `10.129.88.225`
+- **IP:** `<IP_Machine>`
 
 ---
 
 # Table of Contents
+
 - [TL;DR](#tldr)
 - [Reconnaissance](#reconnaissance)
 - [Enumeration & Exploitation](#enumeration--exploitation)
@@ -27,57 +28,114 @@
 ---
 
 # TL;DR
-- A full port scan (`-Pn -p-`) against `10.129.88.225` found six open ports: SSH (22), DNS (53), HTTP/Pi-hole (80), UPnP (1999 and 32469), and Plex Media Server (32400).
-- Service banners (OpenSSH 6.7p1 on Debian 5+deb8u3) indicate a Debian 8 system, consistent with a small device such as a Raspberry Pi.
-- SSH on port 22 was selected as the lead because default credentials are a frequent misconfiguration on Raspberry Pi devices.
-- Authenticating over SSH as `pi` / `raspberry` succeeded, giving access to `user.txt` on the `pi` user's Desktop.
-- `sudo -l` returned `(ALL) NOPASSWD: ALL` for `pi`, allowing immediate elevation to root.
-- The entry under `/root/root.txt` is a decoy ("backup on my USB stick"); the real root flag was recovered by brute-force scanning the raw blocks of the USB stick `/dev/sdb`, where the deleted file still resided.
+
+- Full port scan reveals a Raspberry Pi running Pi-hole (port 80), SSH (port 22), DNS via dnsmasq, and a Plex Media Server.
+- The machine's identity as a Raspberry Pi strongly suggests the use of default credentials.
+- SSH login succeeds immediately with the default Raspberry Pi OS credentials (`pi` / `raspberry`).
+- The `pi` user has full passwordless sudo rights, granting instant root access.
+- `user.txt` is found directly on the pi user's Desktop.
+- `root.txt` has been deliberately deleted from a USB stick — but is recovered by reading raw blocks from the underlying block device (`/dev/sdb`).
 
 ---
 
 # Reconnaissance
 
-A complete port scan (`-Pn -p-`) of `10.129.88.225` returned six open ports:
+The initial reconnaissance begins with a full TCP port scan to get a complete picture of the attack surface:
 
-| Port | Service | Version / detail |
-|------|---------|------------------|
+```bash
+nmap -Pn -p- <IP_Machine>
+```
+
+Followed by a service and version detection pass on the discovered open ports:
+
+```bash
+nmap -Pn -sV -p 22,53,80,1999,32400,32469 <IP_Machine>
+```
+
+The results reveal six open ports:
+
+| Port | Service | Detail |
+|---|---|---|
 | 22/tcp | SSH | OpenSSH 6.7p1 Debian 5+deb8u3 |
 | 53/tcp | DNS | dnsmasq 2.76 |
-| 80/tcp | HTTP | lighttpd 1.4.35, `X-Pi-hole` header (Pi-hole interface) |
+| 80/tcp | HTTP | lighttpd 1.4.35, `X-Pi-hole` header present |
 | 1999/tcp | UPnP | Platinum UPnP 1.0.5.13 (DLNADOC 1.50) |
-| 32400/tcp | HTTP | Plex Media Server |
+| 32400/tcp | Plex | Plex Media Server (responds 401 Unauthorized) |
 | 32469/tcp | UPnP | Platinum UPnP 1.0.5.13 (DLNADOC 1.50) |
 
-The OS fingerprint — Debian 8 suggested by OpenSSH 6.7p1 and the package set — together with open DNS and SSH ports, is consistent with a small embedded device such as a Raspberry Pi.
+The combination of services here tells a very clear story. The presence of **dnsmasq** as a DNS resolver, **Pi-hole** on port 80 (confirmed by the `X-Pi-hole` HTTP response header and the lighttpd web server), and **Plex Media Server** on port 32400 is a near-perfect fingerprint of a **Raspberry Pi** running Raspberry Pi OS. This is not a coincidence — the machine is named "Mirai", a reference to the infamous botnet that compromised hundreds of thousands of IoT devices, including Raspberry Pis, by exploiting default credentials.
 
-**Why SSH was the lead.** Among the exposed services, SSH on port 22 stood out because default credentials are a well-known misconfiguration on Raspberry Pi devices (the classic `pi` / `raspberry` pair). The other services were either known to require authentication (Plex returned `401 Unauthorized`), appeared to be a management interface not yet validated (Pi-hole on port 80), or were network services with no clear unauthenticated path (dnsmasq, UPnP). Given the device profile, testing default SSH credentials offered the most direct and justified initial foothold.
+The SSH version (OpenSSH 6.7p1, Debian 5+deb8u3) is consistent with Debian 8 (Jessie), the distribution typically shipped on older Raspberry Pi images.
+
+The most promising lead is clear: **try the default Raspberry Pi OS credentials over SSH before anything else**.
 
 ---
 
 # Enumeration & Exploitation
 
-With SSH identified as the lead, the next step was to test the default Raspberry Pi credentials `pi` / `raspberry` on port 22. The reasoning was straightforward: the banner confirmed OpenSSH 6.7p1 on Debian, and the overall footprint matched a Raspberry Pi-style appliance where the `pi` account is created by default and often left with its factory password.
+With the hypothesis that this is a Raspberry Pi using its factory default credentials, the exploitation step is straightforward:
 
-The SSH login succeeded, establishing an interactive shell as the `pi` user. From there, the user flag was located directly on the Desktop:
+```bash
+ssh pi@<IP_Machine>
+```
 
-`/home/pi/Desktop/user.txt`
+When prompted for a password, the default Raspberry Pi OS password `raspberry` is entered. The login succeeds immediately:
 
-No web directory brute-forcing, no authentication against Pi-hole or Plex, and no exploit against dnsmasq or UPnP were needed; the default-credential SSH path provided initial access immediately.
+```
+pi@raspberrypi:~ $
+```
+
+No brute-forcing, no vulnerability exploitation, no web attack — the machine was simply left with the credentials it shipped with. This is precisely the class of vulnerability Mirai-type botnets exploit at scale.
+
+Once logged in, the user flag is immediately accessible on the pi user's Desktop:
+
+```bash
+cat /home/pi/Desktop/user.txt
+```
 
 ---
 
 # Privilege Escalation
 
-Once logged in as `pi`, the privilege check was performed with `sudo -l`. The output showed that `pi` could run every command as any user without a password:
+Checking the sudo permissions for the `pi` user:
 
-`(ALL) NOPASSWD: ALL`
+```bash
+sudo -l
+```
 
-This is a complete sudo misconfiguration: the `pi` account has unrestricted, passwordless root access. Elevation was therefore immediate (for example, by spawning a root shell with `sudo su` or `sudo bash`), completing the path from initial access to full system compromise.
+The output reveals the following:
+
+```
+(ALL) NOPASSWD: ALL
+```
+
+The `pi` user has unrestricted, passwordless sudo access over the entire system. This is another Raspberry Pi OS default: the `pi` account is configured to run any command as root without requiring a password. Escalation is a single command:
+
+```bash
+sudo su -
+root@raspberrypi:~#
+```
+
+Root access is now obtained. However, reading `/root/root.txt` reveals an unexpected obstacle:
+
+```
+I lost my original root.txt! I think I may have a backup on my USB stick...
+```
+
+This is a deliberate challenge twist. The real flag was stored on a USB stick, which is mounted at `/media/usbstick` and backed by the block device `/dev/sdb`. The USB stick's files have been deleted, so a standard `ls` or `cat` yields nothing useful.
+
+The file is gone from the filesystem, but its contents may still reside in the unallocated blocks of the device. Since the device is small and we have root access, we can read the raw block data directly:
+
+```bash
+strings /dev/sdb
+```
+
+The `strings` command scans the raw bytes of the block device and extracts any printable ASCII sequences. Among the output, the root flag value appears — it was never truly erased from the underlying storage, only unlinked from the filesystem.
 
 ---
 
 # Flags
+
 - **user.txt**: `REDACTED`
 - **root.txt**: `REDACTED`
 
@@ -85,19 +143,24 @@ This is a complete sudo misconfiguration: the `pi` account has unrestricted, pas
 
 # Lessons Learned
 
-- **Default credentials are a critical foothold.** Embedded and IoT devices ship with well-known default accounts; changing them is the first line of defense.
-- **Unrestricted sudo equals root.** Granting `NOPASSWD: ALL` to a standard user removes any privilege boundary; sudo rules should follow least privilege.
-- **Decoy flags exist.** The apparent root flag under `/root/root.txt` was a trap pointing to a USB stick; never assume the obvious location holds the real flag.
-- **Deleted files can survive.** The root flag was recovered from raw blocks of `/dev/sdb` after deletion, showing that file deletion alone does not erase data.
-- **Keep network services patched.** Old versions of dnsmasq (2.76) and Platinum UPnP (1.0.5.13) carry known vulnerabilities (e.g., CVE-2017-14491); even though they were not the entry vector here, they expand the attack surface.
+1. **Default credentials are never acceptable on internet-facing or network-accessible devices.** The `pi` / `raspberry` combination is publicly documented. Any device shipped with known default credentials and exposed to a network is trivially compromised, exactly as Mirai demonstrated at internet scale in 2016.
+
+2. **The principle of least privilege must apply even to "trusted" local accounts.** Granting a standard user account full passwordless `sudo` rights eliminates any meaningful access control boundary. If SSH is compromised, root is immediately compromised too.
+
+3. **Deleting a file does not erase its data.** Unlinking a file from a filesystem only removes the directory entry and marks the blocks as available for reuse. Until those blocks are overwritten, the data remains recoverable with tools like `strings`, `foremost`, or `photorec`. Sensitive data must be securely wiped (e.g., with `shred` or `dd` with `/dev/zero`) before a device is decommissioned or shared.
+
+4. **Service fingerprinting is a powerful enumeration technique.** The combination of Pi-hole, dnsmasq, lighttpd, and Plex is a near-unambiguous indicator of a Raspberry Pi. Knowing the target platform immediately narrows down the most likely misconfigurations to test.
+
+5. **IoT and embedded devices require the same hardening discipline as servers.** Changing default passwords, restricting sudo, and disabling unnecessary services are baseline requirements regardless of the device's perceived importance.
 
 ---
 
 # References
-- [CVE-2017-14491](https://nvd.nist.gov/vuln/detail/CVE-2017-14491)
+
+- [CVE-2017-14491](https://nvd.nist.gov/vuln/detail/CVE-2017-14491) — dnsmasq heap overflow (dnsmasq < 2.78, DNS responses) — version 2.76 present on this machine is within the affected range.
 
 ---
 
 # Conclusion
 
-Mirai is an Easy Linux box whose entire compromise chain rests on misconfiguration rather than exploitation. A port scan fingerprinted a Debian 8–class device (likely a Raspberry Pi) exposing SSH, DNS, Pi-hole, Plex, and UPnP. The working path was SSH with the default `pi` / `raspberry` credentials, which yielded the user flag and an account with passwordless full sudo rights (`(ALL) NOPASSWD: ALL`) for instant root access. The root flag itself required one extra step: the copy under `/root` was a decoy, and the genuine flag was recovered by scanning the raw blocks of a USB stick where the deleted file persisted. The case illustrates how default credentials and loose sudo policies can fully compromise a device, and how deleted data may remain recoverable from underlying disk blocks.
+Mirai is a machine that teaches through simplicity. The entire attack chain — from reconnaissance to root flag — requires no exploit, no CVE, and no advanced technique. The machine is compromised because it runs with the exact same default configuration that millions of Raspberry Pi devices ship with: a well-known default password for a user account that has unconditional root access. The final twist, recovering a deleted flag from raw disk blocks, adds a practical forensics lesson on top of the security fundamentals. The machine's name is a direct tribute to the Mirai botnet, a reminder that some of the most devastating attacks in history were built not on zero-days, but on unchanged factory defaults.

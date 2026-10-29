@@ -10,15 +10,18 @@
 
 - **Machine:** sau
 - **Platform:** Hack The Box
-- **IP:** (instance stopped)
+- **IP:** 10.129.229.26
 
 ---
 
 # Table of Contents
 
-- [TL;DR](#tl-dr)
+- [sau — Hack The Box Walkthrough](#sau--hack-the-box-walkthrough)
+  - [Machine Information](#machine-information)
+- [Table of Contents](#table-of-contents)
+- [TL;DR](#tldr)
 - [Reconnaissance](#reconnaissance)
-- [Enumeration & Exploitation](#enumeration-exploitation)
+- [Enumeration \& Exploitation](#enumeration--exploitation)
 - [Privilege Escalation](#privilege-escalation)
 - [Flags](#flags)
 - [Lessons Learned](#lessons-learned)

@@ -58,6 +58,8 @@ Each writeup typically includes:
 | [Brainfuck](Brainfuck/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 | [CodePartTwo](CodePartTwo/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Silentium](Silentium/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ |
+| [Mirai](Mirai/README.md) | Linux | Easy | 🇬🇧 | ✅ |
+| [Sau](Sau/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 
 ---
 

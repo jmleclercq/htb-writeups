@@ -60,6 +60,7 @@ Each writeup typically includes:
 | [Silentium](Silentium/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ |
 | [Mirai](Mirai/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Sau](Sau/README.md) | Linux | Easy | 🇬🇧 | ✅ |
+| [Antique](Antique/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 
 ---
 

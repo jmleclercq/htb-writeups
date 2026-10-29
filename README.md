@@ -61,6 +61,8 @@ Each writeup typically includes:
 | [Mirai](Mirai/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Sau](Sau/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Antique](Antique/README.md) | Linux | Easy | 🇬🇧 | ✅ |
+| [Titanic](Titanic/README.md) | Linux | Easy | 🇬🇧 | ✅ |
+
 
 ---
 

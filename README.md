@@ -62,6 +62,7 @@ Each writeup typically includes:
 | [Sau](Sau/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Antique](Antique/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Titanic](Titanic/README.md) | Linux | Easy | 🇬🇧 | ✅ |
+| [Takeoff](Takeoff/README.md) | Linux | Hard | 🇬🇧 | 🟥 |
 
 
 ---

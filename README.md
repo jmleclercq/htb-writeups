@@ -63,6 +63,7 @@ Each writeup typically includes:
 | [Antique](Antique/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Titanic](Titanic/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Takeoff](Takeoff/README.md) | Linux | Hard | 🇬🇧 | 🟥 |
+| [DevHub](DevHub/README.md) | Linux | Medium | 🇬🇧 | ✅ |
 
 
 ---

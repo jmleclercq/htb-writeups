@@ -1,7 +1,7 @@
 # Takeoff — Hack The Box Walkthrough
 
 <p align="center">
-  <img src="https://img.shields.io/badge/HTB-Titanic-red?style=for-the-badge&logo=hackthebox&logoColor=white">
+  <img src="https://img.shields.io/badge/HTB-Takeoff-red?style=for-the-badge&logo=hackthebox&logoColor=white">
   <img src="https://img.shields.io/badge/Difficulty-Hard-red?style=for-the-badge">
   <img src="https://img.shields.io/badge/OS-Linux-blue?style=for-the-badge&logo=linux&logoColor=white">
 </p>

@@ -58,12 +58,12 @@ Each writeup typically includes:
 | [Brainfuck](Brainfuck/README.md) | Insane | 🐧 Linux | 🇬🇧 | ✅ |
 | [CodePartTwo](CodePartTwo/README.md) | Linux | Easy | 🇬🇧 | ✅ |
 | [Silentium](Silentium/README.md) | Easy | 🐧 Linux | 🇫🇷 | ✅ | 
-| [Mirai](Mirai/README.md) | Linux | Easy | 🇬🇧 | ✅ |
-| [Sau](Sau/README.md) | Linux | Easy | 🇬🇧 | ✅ |
-| [Antique](Antique/README.md) | Linux | Easy | 🇬🇧 | ✅ |
-| [Titanic](Titanic/README.md) | Linux | Easy | 🇬🇧 | ✅ |
-| [Takeoff](Takeoff/README.md) | Linux | Hard | 🇬🇧 | 🟥 |
-| [DevHub](DevHub/README.md) | Linux | Medium | 🇬🇧 | ✅ |
+| [Mirai](Mirai/README.md) | Easy |🐧 Linux | 🇬🇧 | ✅ |
+| [Sau](Sau/README.md) | Easy |🐧 Linux | 🇬🇧 | ✅ |
+| [Antique](Antique/README.md) | Easy |🐧 Linux | 🇬🇧 | ✅ |
+| [Titanic](Titanic/README.md) | Easy |🐧 Linux | 🇬🇧 | ✅ |
+| [Takeoff](Takeoff/README.md) | Hard |🐧 Linux | 🇬🇧 | 🟥 |
+| [DevHub](DevHub/README.md) | Medium |🐧 Linux | 🇬🇧 | ✅ |
 
 
 ---
